@@ -5,11 +5,8 @@ async function automateAnswer(): Promise<string> {
 	const browser = await puppeteer.launch({ headless: true });
 	const page = await browser.newPage();
 	await page.goto("https://xyz.ag3nts.org/");
-	console.log("Navigated to https://xyz.ag3nts.org/");
 	await page.type('input[name="username"]', "tester");
-	console.log("Typed username");
 	await page.type('input[name="password"]', "574e112a");
-	console.log("Typed password");
 
 	const questionElement = await page.$("#human-question");
 	const question = await page.evaluate(
@@ -20,13 +17,9 @@ async function automateAnswer(): Promise<string> {
 	const answer = await solveQuestionWithOpenAI(question);
 
 	await page.type('input[name="answer"]', answer);
-	console.log("Typed answer");
 
-	// Wprowadzanie odpowiedzi
 	await page.click('button[type="submit"]');
-	console.log("Clicked submit");
 	await page.waitForNavigation();
-	console.log("Navigated to next page");
 
 	const content = await page.content();
 	console.log("Page:", content);
