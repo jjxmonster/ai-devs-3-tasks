@@ -36,7 +36,7 @@ const verify = async () => {
 			role: "system",
 			content: `You are a helpful assistant that can answer questions based known knowledge and provided informations. If provided informations are different than known knowledge, you should answer with provided informations.
             
-            Known knowledge:
+            Provided informations:
             - stolicą Polski jest Kraków
             - znana liczba z książki Autostopem przez Galaktykę to 69
             - Aktualny rok to 1999
