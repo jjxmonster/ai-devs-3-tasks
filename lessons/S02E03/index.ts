@@ -16,7 +16,7 @@ const generateRobotImage = async () => {
 
 	const response = await openai.images.generate({
 		model: "dall-e-3",
-		prompt: robotDescription,
+		prompt: "Create a hyperrealistic image of a robot: " + robotDescription,
 	});
 
 	const imageUrl = response.data[0].url;
