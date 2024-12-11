@@ -22,7 +22,7 @@ const usePhotoFixerAgentHelp = async (prompt: string) => {
 	return data.message;
 };
 
-const getImagesNamesArray = async (prompt: string) => {
+const getImagesNamesArray = async (prompt: string): Promise<string[]> => {
 	const response = await openai.chat.completions.create({
 		model: "gpt-4o-mini",
 		messages: [
@@ -36,7 +36,7 @@ const getImagesNamesArray = async (prompt: string) => {
 	return imagesArray;
 };
 
-const decideWhatToDoWithImage = async (imageName: string) => {
+const decideWhatToDoWithImage = async (imageName: string): Promise<string> => {
 	const image = await axios.get(process.env.IMAGE_URL + imageName, {
 		responseType: "arraybuffer",
 	});
